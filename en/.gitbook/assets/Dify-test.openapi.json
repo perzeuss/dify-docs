@@ -58,28 +58,31 @@
                   "type": "object",
                   "properties": {
                     "records": {
-                      "type": "object",
-                      "properties": {
-                        "content": {
-                          "type": "string",
-                          "description": "Contains a chunk of text from a data source in the knowledge base."
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "content": {
+                            "type": "string",
+                            "description": "Contains a chunk of text from a data source in the knowledge base."
+                          },
+                          "score": {
+                            "type": "number",
+                            "format": "float",
+                            "description": "The score of relevance of the result to the query, scope: 0~1"
+                          },
+                          "title": {
+                            "type": "string",
+                            "description": "Document title"
+                          },
+                          "metadata": {
+                            "type": "string",
+                            "description": "Contains metadata attributes and their values for the document in the data source."
+                          }
                         },
-                        "score": {
-                          "type": "number",
-                          "format": "float",
-                          "description": "The score of relevance of the result to the query, scope: 0~1"
-                        },
-                        "title": {
-                          "type": "string",
-                          "description": "Document title"
-                        },
-                        "metadata": {
-                          "type": "string",
-                          "description": "Contains metadata attributes and their values for the document in the data source."
-                        }
-                      },
-                      "title": "A list of records from querying the knowledge base.",
-                      "required": ["content", "score", "title"]
+                        "title": "A list of records from querying the knowledge base.",
+                        "required": ["content", "score", "title"]
+                      }
                     }
                   },
                   "required": ["records"]
